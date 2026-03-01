@@ -16,7 +16,6 @@
         }
 
         body {
-            /* Fondo degradado aesthetic rosa pastel */
             background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
             background: linear-gradient(135deg, #ffdde1 0%, #ee9ca7 100%);
             min-height: 100vh;
@@ -24,59 +23,100 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
-            overflow-x: hidden; /* Evita que las decoraciones creen barras de desplazamiento */
             position: relative;
         }
 
-        /* Corazones y estrellas flotantes de fondo */
-        .decor-item {
+        /* Contenedor de partículas para que no afecten el scroll de la página */
+        .falling-elements {
             position: fixed;
-            color: rgba(238, 156, 167, 0.4); /* Subtle pink, semi-transparent */
-            opacity: 0;
-            pointer-events: none; /* Asegura que no se puedan hacer clic */
-            filter: blur(1px); /* Suaviza los iconos */
-            animation: floatGlitter 20s linear infinite;
-            z-index: -1; /* Los coloca detrás del contenedor central */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
         }
 
-        /* Posiciones y tiempos individuales para cada decoración */
-        .decor-1 { top: 15%; left: 10%; font-size: 24px; animation-delay: 0s; }
-        .decor-2 { bottom: 25%; right: 15%; font-size: 28px; animation-delay: 7s; }
-        .decor-3 { top: 60%; left: 5%; font-size: 20px; animation-delay: 14s; }
-
-        @keyframes floatGlitter {
-            0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.8; }
-            50% { transform: translate(30px, -100px) rotate(10deg); }
-            90% { opacity: 0.8; }
-            100% { transform: translate(0, -200px) rotate(-10deg); opacity: 0; }
+        .particle {
+            position: absolute;
+            top: -10%;
+            user-select: none;
+            animation: fall linear infinite;
+            opacity: 0.7;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
+
+        @keyframes fall {
+            0% { 
+                transform: translateY(-10vh) rotate(0deg) scale(0.8); 
+                opacity: 0; 
+            }
+            10% { 
+                opacity: 0.8; 
+            }
+            50% {
+                transform: translateY(50vh) rotate(180deg) scale(1.2);
+            }
+            90% { 
+                opacity: 0.8; 
+            }
+            100% { 
+                transform: translateY(110vh) rotate(360deg) scale(0.8); 
+                opacity: 0; 
+            }
+        }
+
+        /* Distribución y tiempos variados para un efecto natural */
+        .p1 { left: 5%; animation-duration: 12s; animation-delay: 0s; font-size: 20px; }
+        .p2 { left: 15%; animation-duration: 18s; animation-delay: 3s; font-size: 15px; }
+        .p3 { left: 25%; animation-duration: 15s; animation-delay: 7s; font-size: 24px; }
+        .p4 { left: 35%; animation-duration: 20s; animation-delay: 1s; font-size: 18px; }
+        .p5 { left: 45%; animation-duration: 14s; animation-delay: 5s; font-size: 22px; }
+        .p6 { left: 55%; animation-duration: 17s; animation-delay: 9s; font-size: 16px; }
+        .p7 { left: 65%; animation-duration: 13s; animation-delay: 2s; font-size: 20px; }
+        .p8 { left: 75%; animation-duration: 19s; animation-delay: 6s; font-size: 18px; }
+        .p9 { left: 85%; animation-duration: 11s; animation-delay: 4s; font-size: 25px; }
+        .p10 { left: 95%; animation-duration: 16s; animation-delay: 8s; font-size: 14px; }
+        .p11 { left: 10%; animation-duration: 15s; animation-delay: 10s; font-size: 21px; }
+        .p12 { left: 30%; animation-duration: 14s; animation-delay: 2s; font-size: 19px; }
+        .p13 { left: 50%; animation-duration: 18s; animation-delay: 7s; font-size: 17px; }
+        .p14 { left: 70%; animation-duration: 12s; animation-delay: 1s; font-size: 23px; }
+        .p15 { left: 90%; animation-duration: 16s; animation-delay: 5s; font-size: 16px; }
 
         .container {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.85);
             max-width: 400px;
             width: 100%;
             border-radius: 30px;
             padding: 40px 20px;
             text-align: center;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(10px);
-            position: relative; /* Para posicionar elementos dentro */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            position: relative;
+            z-index: 1; /* Asegura que el contenedor esté sobre las estrellas */
         }
 
         .profile-container {
             margin-bottom: 25px;
-            position: relative; /* Contexto para la estrella flotante interna */
+            position: relative;
         }
 
-        /* Pequeña estrella flotante interna cerca del perfil */
         .profile-container::after {
             content: "✨";
             position: absolute;
-            top: 50px; /* Ajusta la posición vertical */
-            right: -10px;
-            font-size: 18px;
-            color: rgba(238, 156, 167, 0.7);
+            top: 10px;
+            right: 25%;
+            font-size: 22px;
+            color: rgba(238, 156, 167, 0.9);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.3); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.7; }
         }
 
         .profile-pic {
@@ -87,6 +127,8 @@
             border: 4px solid #fff;
             box-shadow: 0 8px 20px rgba(238, 156, 167, 0.4);
             margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
         }
 
         h1 {
@@ -94,7 +136,7 @@
             font-size: 24px;
             font-weight: 600;
             margin-bottom: 5px;
-            text-shadow: 1px 1px 2px rgba(238, 156, 167, 0.3); /* Sombra suave para elegancia */
+            text-shadow: 1px 1px 2px rgba(238, 156, 167, 0.3);
         }
 
         .subtitle {
@@ -126,6 +168,7 @@
             transition: all 0.3s ease;
             position: relative;
             border: 1px solid #ffeef0;
+            overflow: hidden;
         }
 
         .link-btn img {
@@ -133,27 +176,63 @@
             height: 24px;
             position: absolute;
             left: 20px;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+
+        .link-btn span {
+            z-index: 2;
+        }
+
+        .link-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ffdde1 0%, #ee9ca7 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
         }
 
         .link-btn:hover {
-            transform: translateY(-3px);
-            background: linear-gradient(135deg, #ffdde1 0%, #ee9ca7 100%);
+            transform: translateY(-4px);
             color: #fff;
-            box-shadow: 0 8px 20px rgba(238, 156, 167, 0.4);
+            box-shadow: 0 8px 25px rgba(238, 156, 167, 0.5);
             border-color: transparent;
         }
 
-        /* Cambiar el brillo del icono en hover si es necesario para que contraste con el texto blanco */
+        .link-btn:hover::before {
+            opacity: 1;
+        }
+
         .link-btn:hover img {
             filter: brightness(0) invert(1);
+            transform: scale(1.1);
         }
     </style>
 </head>
 <body>
 
-    <span class="decor-item decor-1">✨</span>
-    <span class="decor-item decor-2">💖</span>
-    <span class="decor-item decor-3">🌟</span>
+    <div class="falling-elements">
+        <span class="particle p1">✨</span>
+        <span class="particle p2">💖</span>
+        <span class="particle p3">🌸</span>
+        <span class="particle p4">✨</span>
+        <span class="particle p5">💖</span>
+        <span class="particle p6">🌟</span>
+        <span class="particle p7">✨</span>
+        <span class="particle p8">💖</span>
+        <span class="particle p9">🌸</span>
+        <span class="particle p10">🌟</span>
+        <span class="particle p11">✨</span>
+        <span class="particle p12">💖</span>
+        <span class="particle p13">🌸</span>
+        <span class="particle p14">✨</span>
+        <span class="particle p15">💖</span>
+    </div>
 
     <div class="container">
         <header class="profile-container">
@@ -166,17 +245,17 @@
         <nav class="links-container">
             <a href="https://www.instagram.com/justnaomdz?igsh=amswdmg5anhmdmth" class="link-btn" target="_blank">
                 <img src="instagram.png" alt="Instagram" onerror="this.src='https://via.placeholder.com/24x24/cccccc/ffffff?text=IG'">
-                Instagram
+                <span>Instagram</span>
             </a>
 
             <a href="https://www.tiktok.com/@nao.mendez1?_r=1&_t=ZS-94JhesT2L0q" class="link-btn" target="_blank">
                 <img src="tiktok.png" alt="TikTok" onerror="this.src='https://via.placeholder.com/24x24/cccccc/ffffff?text=TK'">
-                TikTok
+                <span>TikTok</span>
             </a>
 
             <a href="https://youtube.com/@naomendez?si=h9tR0g1IjBX0o_T7" class="link-btn" target="_blank">
                 <img src="youtube.png" alt="YouTube" onerror="this.src='https://via.placeholder.com/24x24/cccccc/ffffff?text=YT'">
-                YouTube
+                <span>YouTube</span>
             </a>
         </nav>
     </div>
