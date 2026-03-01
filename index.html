@@ -24,6 +24,32 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
+            overflow-x: hidden; /* Evita que las decoraciones creen barras de desplazamiento */
+            position: relative;
+        }
+
+        /* Corazones y estrellas flotantes de fondo */
+        .decor-item {
+            position: fixed;
+            color: rgba(238, 156, 167, 0.4); /* Subtle pink, semi-transparent */
+            opacity: 0;
+            pointer-events: none; /* Asegura que no se puedan hacer clic */
+            filter: blur(1px); /* Suaviza los iconos */
+            animation: floatGlitter 20s linear infinite;
+            z-index: -1; /* Los coloca detrás del contenedor central */
+        }
+
+        /* Posiciones y tiempos individuales para cada decoración */
+        .decor-1 { top: 15%; left: 10%; font-size: 24px; animation-delay: 0s; }
+        .decor-2 { bottom: 25%; right: 15%; font-size: 28px; animation-delay: 7s; }
+        .decor-3 { top: 60%; left: 5%; font-size: 20px; animation-delay: 14s; }
+
+        @keyframes floatGlitter {
+            0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.8; }
+            50% { transform: translate(30px, -100px) rotate(10deg); }
+            90% { opacity: 0.8; }
+            100% { transform: translate(0, -200px) rotate(-10deg); opacity: 0; }
         }
 
         .container {
@@ -35,10 +61,22 @@
             text-align: center;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(10px);
+            position: relative; /* Para posicionar elementos dentro */
         }
 
         .profile-container {
             margin-bottom: 25px;
+            position: relative; /* Contexto para la estrella flotante interna */
+        }
+
+        /* Pequeña estrella flotante interna cerca del perfil */
+        .profile-container::after {
+            content: "✨";
+            position: absolute;
+            top: 50px; /* Ajusta la posición vertical */
+            right: -10px;
+            font-size: 18px;
+            color: rgba(238, 156, 167, 0.7);
         }
 
         .profile-pic {
@@ -56,6 +94,7 @@
             font-size: 24px;
             font-weight: 600;
             margin-bottom: 5px;
+            text-shadow: 1px 1px 2px rgba(238, 156, 167, 0.3); /* Sombra suave para elegancia */
         }
 
         .subtitle {
@@ -111,6 +150,10 @@
     </style>
 </head>
 <body>
+
+    <span class="decor-item decor-1">✨</span>
+    <span class="decor-item decor-2">💖</span>
+    <span class="decor-item decor-3">🌟</span>
 
     <div class="container">
         <header class="profile-container">
