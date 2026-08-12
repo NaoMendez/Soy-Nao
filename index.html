@@ -6,15 +6,16 @@
     <title>Nao Méndez | Link en Bio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --hot: #ff2d87;
-            --hot-deep: #d6146a;
-            --magenta: #ff5fa2;
-            --blush: #ffd6e8;
-            --ink: #3a0d24;
-            --gold: #ffc857;
+            --hot: #e6006e;
+            --hot-deep: #b8005a;
+            --magenta: #ff4d9e;
+            --blush: #fbe3ee;
+            --ink: #2a0a1a;
+            --gold: #d4af6a;
+            --noir: #1c1015;
         }
 
         * {
@@ -25,7 +26,7 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(160deg, #ff2d87 0%, #ff6fa8 45%, #ffb3d1 100%);
+            background: radial-gradient(circle at 50% 0%, #4a0524 0%, var(--noir) 55%, #14090d 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -35,31 +36,32 @@
             overflow-x: hidden;
         }
 
-        /* --- Manchas de luz de fondo, energía TikTok --- */
-        body::before,
+        /* --- Halo dorado sutil de fondo --- */
+        body::before {
+            content: '';
+            position: fixed;
+            width: 60vmax;
+            height: 60vmax;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(212, 175, 106, 0.18) 0%, transparent 65%);
+            top: -15%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 0;
+        }
         body::after {
             content: '';
             position: fixed;
-            width: 55vmax;
-            height: 55vmax;
+            width: 70vmax;
+            height: 70vmax;
             border-radius: 50%;
-            filter: blur(60px);
+            background: radial-gradient(circle, rgba(230, 0, 110, 0.15) 0%, transparent 60%);
+            bottom: -30%;
+            right: -10%;
             z-index: 0;
-            opacity: 0.55;
-        }
-        body::before {
-            background: #ffe37a;
-            top: -20%;
-            left: -20%;
-        }
-        body::after {
-            background: #c400ff;
-            bottom: -25%;
-            right: -20%;
-            opacity: 0.35;
         }
 
-        /* --- Confeti cayendo, más presencia --- */
+        /* --- Destellos cayendo, discretos y finos --- */
         .falling-elements {
             position: fixed;
             inset: 0;
@@ -71,105 +73,123 @@
         .petal {
             position: absolute;
             top: -8%;
-            font-size: 16px;
-            opacity: 0.8;
+            font-size: 11px;
+            opacity: 0.55;
             animation: fall linear infinite;
-            filter: drop-shadow(0 0 4px rgba(255,255,255,0.4));
+            color: var(--gold);
         }
 
         @keyframes fall {
             0%   { transform: translateY(-10vh) rotate(0deg) scale(0.8); opacity: 0; }
-            10%  { opacity: 0.9; }
-            90%  { opacity: 0.7; }
-            100% { transform: translateY(110vh) rotate(320deg) scale(1.1); opacity: 0; }
+            10%  { opacity: 0.6; }
+            90%  { opacity: 0.4; }
+            100% { transform: translateY(110vh) rotate(200deg) scale(1); opacity: 0; }
         }
 
-        .petal.p1  { left: 6%;  animation-duration: 13s; animation-delay: 0s;  font-size: 18px; }
-        .petal.p2  { left: 18%; animation-duration: 17s; animation-delay: 3s;  font-size: 13px; }
-        .petal.p3  { left: 30%; animation-duration: 14s; animation-delay: 8s;  font-size: 20px; }
-        .petal.p4  { left: 42%; animation-duration: 19s; animation-delay: 1s;  font-size: 15px; }
-        .petal.p5  { left: 58%; animation-duration: 15s; animation-delay: 6s;  font-size: 19px; }
-        .petal.p6  { left: 70%; animation-duration: 18s; animation-delay: 10s; font-size: 14px; }
-        .petal.p7  { left: 82%; animation-duration: 12s; animation-delay: 4s;  font-size: 17px; }
-        .petal.p8  { left: 92%; animation-duration: 16s; animation-delay: 12s; font-size: 16px; }
+        .petal.p1  { left: 6%;  animation-duration: 18s; animation-delay: 0s;  }
+        .petal.p2  { left: 18%; animation-duration: 23s; animation-delay: 3s;  font-size: 8px; }
+        .petal.p3  { left: 30%; animation-duration: 19s; animation-delay: 8s;  }
+        .petal.p4  { left: 42%; animation-duration: 25s; animation-delay: 1s;  font-size: 9px; }
+        .petal.p5  { left: 58%; animation-duration: 20s; animation-delay: 6s;  }
+        .petal.p6  { left: 70%; animation-duration: 24s; animation-delay: 10s; font-size: 8px; }
+        .petal.p7  { left: 82%; animation-duration: 17s; animation-delay: 4s;  }
+        .petal.p8  { left: 92%; animation-duration: 21s; animation-delay: 12s; font-size: 9px; }
 
-        /* --- Tarjeta principal, energía TikTok / moda-belleza --- */
+        /* --- Tarjeta principal, elegante y editorial --- */
         .container {
-            background: #fff;
+            background: linear-gradient(165deg, #fff9fb 0%, #fdf1f6 100%);
             max-width: 380px;
             width: 100%;
-            border-radius: 32px;
-            padding: 44px 30px 34px;
+            border-radius: 6px;
+            padding: 46px 34px 36px;
             text-align: center;
-            box-shadow: 0 30px 60px -15px rgba(214, 20, 106, 0.45), 0 2px 8px rgba(58, 13, 36, 0.08);
+            box-shadow: 0 35px 70px -20px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(212, 175, 106, 0.25);
             position: relative;
             z-index: 1;
-            border: 3px solid var(--hot);
         }
+
+        .container::before,
+        .container::after {
+            content: '';
+            position: absolute;
+            width: 26px;
+            height: 26px;
+            border: 1px solid var(--gold);
+        }
+        .container::before { top: 12px; left: 12px; border-right: none; border-bottom: none; }
+        .container::after  { bottom: 12px; right: 12px; border-left: none; border-top: none; }
 
         .eyebrow {
             display: inline-block;
-            font-size: 10px;
-            letter-spacing: 3px;
+            font-size: 9.5px;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            color: #fff;
-            font-weight: 600;
-            margin-bottom: 20px;
-            background: linear-gradient(90deg, var(--hot) 0%, var(--magenta) 100%);
-            padding: 5px 16px;
-            border-radius: 20px;
+            color: var(--gold);
+            font-weight: 500;
+            margin-bottom: 22px;
         }
 
         .profile-container {
             position: relative;
             display: inline-block;
-            margin-bottom: 18px;
+            margin-bottom: 20px;
         }
 
         .ribbon-ring {
             position: absolute;
             inset: -6px;
             border-radius: 50%;
-            background: conic-gradient(from 0deg, var(--hot), var(--gold), var(--magenta), #c400ff, var(--hot));
+            border: 1px solid var(--gold);
             z-index: 0;
         }
 
         .profile-pic {
-            width: 116px;
-            height: 116px;
+            width: 114px;
+            height: 114px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid #fff;
-            box-shadow: 0 10px 24px rgba(214, 20, 106, 0.4);
+            border: 3px solid #fff;
+            box-shadow: 0 12px 26px rgba(184, 0, 90, 0.35);
             display: block;
             position: relative;
             z-index: 1;
         }
 
         h1 {
-            font-family: 'Fredoka', sans-serif;
-            font-weight: 700;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 600;
             color: var(--ink);
-            font-size: 30px;
-            margin-bottom: 6px;
-            letter-spacing: 0.3px;
+            font-size: 34px;
+            margin-bottom: 4px;
+            letter-spacing: 0.5px;
         }
 
         .subtitle {
             color: var(--hot-deep);
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 1.5px;
+            font-size: 10.5px;
+            font-weight: 500;
+            letter-spacing: 2.5px;
             text-transform: uppercase;
             margin-bottom: 8px;
         }
 
         .divider {
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--hot), var(--gold));
-            border-radius: 4px;
-            margin: 22px auto 26px;
+            width: 1px;
+            height: 26px;
+            background: var(--gold);
+            margin: 22px auto 24px;
+            position: relative;
+        }
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+            width: 6px;
+            height: 6px;
+            background: var(--hot);
         }
 
         .links-container {
@@ -181,27 +201,26 @@
         .link-btn {
             display: flex;
             align-items: center;
-            gap: 14px;
-            background: linear-gradient(135deg, #fff5fa 0%, var(--blush) 100%);
+            gap: 16px;
+            background: #fff;
             color: var(--ink);
             text-decoration: none;
             padding: 16px 22px;
-            border-radius: 18px;
+            border-radius: 3px;
             font-size: 14px;
             font-weight: 500;
             letter-spacing: 0.3px;
-            border: 2px solid transparent;
+            border: 1px solid var(--blush);
             position: relative;
-            transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+            transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
             text-align: left;
-            overflow: hidden;
         }
 
         .link-btn img {
-            width: 22px;
-            height: 22px;
+            width: 20px;
+            height: 20px;
             flex-shrink: 0;
-            transition: transform 0.25s ease;
+            transition: transform 0.3s ease;
         }
 
         .link-btn .tag-hole {
@@ -214,59 +233,53 @@
         }
 
         .link-btn .label span.name {
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 600;
-            color: var(--hot-deep);
+            letter-spacing: 0.5px;
         }
 
         .link-btn .label span.tagline {
             font-size: 10px;
-            color: #a3527a;
-            font-weight: 400;
-            letter-spacing: 0.3px;
+            color: #b98ba1;
+            font-weight: 300;
+            letter-spacing: 0.4px;
             margin-top: 1px;
         }
 
         .link-btn:hover {
             border-color: var(--hot);
-            background: linear-gradient(135deg, var(--hot) 0%, var(--magenta) 100%);
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 12px 26px rgba(214, 20, 106, 0.4);
+            background: linear-gradient(165deg, #ffffff 0%, var(--blush) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px rgba(184, 0, 90, 0.22);
         }
 
-        .link-btn:hover .label span.name,
-        .link-btn:hover .label span.tagline { color: #fff; }
-
-        .link-btn:hover img {
-            transform: scale(1.1) rotate(-4deg);
-            filter: brightness(0) invert(1);
-        }
+        .link-btn:hover img { transform: scale(1.06); }
 
         .footer-note {
-            margin-top: 28px;
-            font-size: 10px;
-            letter-spacing: 2px;
+            margin-top: 30px;
+            font-size: 9px;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            font-weight: 600;
-            color: var(--hot-deep);
+            font-weight: 500;
+            color: var(--gold);
         }
     </style>
 </head>
 <body>
 
     <div class="falling-elements">
-        <span class="petal p1">💖</span>
-        <span class="petal p2">✨</span>
-        <span class="petal p3">💋</span>
-        <span class="petal p4">🎀</span>
-        <span class="petal p5">💖</span>
-        <span class="petal p6">✨</span>
-        <span class="petal p7">🎀</span>
-        <span class="petal p8">💋</span>
+        <span class="petal p1">✦</span>
+        <span class="petal p2">✧</span>
+        <span class="petal p3">✦</span>
+        <span class="petal p4">✧</span>
+        <span class="petal p5">✦</span>
+        <span class="petal p6">✧</span>
+        <span class="petal p7">✦</span>
+        <span class="petal p8">✧</span>
     </div>
 
     <div class="container">
-        <p class="eyebrow">✨ Sigueme en todas mis cuentas ✨</p>
+        <p class="eyebrow">Sigueme en todas mis cuentas</p>
 
         <header class="profile-container">
             <div class="ribbon-ring"></div>
